@@ -11,8 +11,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private RadioGroup rg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,18 +19,17 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recycler);
         mRecyclerView.addItemDecoration(new NormalDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(new Tadapter(this));
-        rg = findViewById(R.id.rb_control);
-        rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        ((RadioGroup) findViewById(R.id.rb_control)).setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_1:
                         mRecyclerView.addItemDecoration(new NormalDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL,false));
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
                         break;
                     case R.id.rb_2:
                         mRecyclerView.addItemDecoration(new NormalDecoration(MainActivity.this, LinearLayoutManager.HORIZONTAL));
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false));
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
                         break;
                     default:
                         break;
