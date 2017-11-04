@@ -22,13 +22,15 @@ public class NormalDecoration extends RecyclerView.ItemDecoration {
 
     private Context mContext;
     private Drawable lineDrawable;
+    private Drawable verticalDrawable;
     private int orientation = LinearLayoutManager.VERTICAL;
     private int lineHeight = 0;
     private int lineWidth = 0;
 
-    public NormalDecoration(Context context) {
+    private NormalDecoration(Context context) {
         this.mContext = context;
         this.lineDrawable = ContextCompat.getDrawable(context, R.color.line);
+        this.verticalDrawable = ContextCompat.getDrawable(context, R.color.line);
         this.lineHeight = context.getResources().getDimensionPixelSize(R.dimen._1px);
         this.lineWidth = context.getResources().getDimensionPixelSize(R.dimen._1px);
     }
@@ -56,9 +58,9 @@ public class NormalDecoration extends RecyclerView.ItemDecoration {
         for (int i = 0; i < size; i++) {
             View child = recyclerView.getChildAt(i);
             RecyclerView.LayoutParams lp = ((LayoutParams) child.getLayoutParams());
-            int left = lp.leftMargin;
-            int top = lp.height + lp.topMargin + lp.bottomMargin;
-            int right = lp.width + left;
+            int left = child.getLeft();
+            int top = child.getBottom() + lp.bottomMargin;
+            int right = child.getRight();
             int bottom = top + lineHeight;
             lineDrawable.setBounds(left, top, right, bottom);
             lineDrawable.draw(c);
@@ -70,12 +72,12 @@ public class NormalDecoration extends RecyclerView.ItemDecoration {
         for (int i = 0; i < size; i++) {
             View child = recyclerView.getChildAt(i);
             RecyclerView.LayoutParams lp = ((RecyclerView.LayoutParams) child.getLayoutParams());
-            int left = lp.width + lp.leftMargin + lp.rightMargin;
-            int top = lp.topMargin;
+            int left = child.getRight() + lp.rightMargin;
+            int top = child.getTop();
             int right = left + lineWidth;
-            int bottom = top + lp.height + lp.bottomMargin;
-            lineDrawable.setBounds(left, top, right, bottom);
-            lineDrawable.draw(c);
+            int bottom = child.getBottom();
+            verticalDrawable.setBounds(left, top, right, bottom);
+            verticalDrawable.draw(c);
         }
     }
 

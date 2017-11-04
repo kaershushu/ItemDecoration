@@ -11,24 +11,32 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    private NormalDecoration mNormalDecoration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final RecyclerView mRecyclerView;
         mRecyclerView = findViewById(R.id.recycler);
-        mRecyclerView.addItemDecoration(new NormalDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
+        mNormalDecoration = new NormalDecoration(MainActivity.this, LinearLayoutManager.VERTICAL);
+        mRecyclerView.addItemDecoration(mNormalDecoration);
         mRecyclerView.setAdapter(new Tadapter(this));
         ((RadioGroup) findViewById(R.id.rb_control)).setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (mNormalDecoration != null){
+                    mRecyclerView.removeItemDecoration(mNormalDecoration);
+                }
                 switch (checkedId) {
                     case R.id.rb_1:
-                        mRecyclerView.addItemDecoration(new NormalDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
+                        //重新添加ItemDecoration必须先移除旧的，防止对新ItemDecoration产生影响
+                        mNormalDecoration = new NormalDecoration(MainActivity.this, LinearLayoutManager.VERTICAL);
+                        mRecyclerView.addItemDecoration(mNormalDecoration);
                         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
                         break;
                     case R.id.rb_2:
-                        mRecyclerView.addItemDecoration(new NormalDecoration(MainActivity.this, LinearLayoutManager.HORIZONTAL));
+                        mNormalDecoration = new NormalDecoration(MainActivity.this, LinearLayoutManager.HORIZONTAL);
+                        mRecyclerView.addItemDecoration(mNormalDecoration);
                         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
                         break;
                     default:
