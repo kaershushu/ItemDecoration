@@ -1,6 +1,7 @@
-package com.example.administrator.itemdecoration;
+package com.example.administrator.itemdecoration.adapter;
 
-import com.example.administrator.itemdecoration.Tadapter.VH;
+import com.example.administrator.itemdecoration.R;
+import com.example.administrator.itemdecoration.adapter.Tadapter.VH;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
