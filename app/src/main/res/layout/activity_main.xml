@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context="com.example.administrator.itemdecoration.MainActivity">
 
+    <Button
+        android:id="@+id/group_btn"
+        android:text="@string/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <RadioGroup
         android:id="@+id/rb_control"
         android:layout_width="match_parent"

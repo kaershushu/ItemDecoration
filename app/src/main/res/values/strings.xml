@@ -4,4 +4,5 @@
     <string name="vertical">竖向分割线</string>
     <string name="horizontal">横向分割线</string>
     <string name="time_line">时间线</string>
+    <string name="group">分组</string>
 </resources>
