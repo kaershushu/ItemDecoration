@@ -1,5 +1,6 @@
 package com.example.administrator.itemdecoration.itemdecoration;
 
+import com.example.administrator.itemdecoration.callback.GroupCallback;
 import com.example.administrator.itemdecoration.bean.GroupInfo;
 
 import android.content.Context;
@@ -65,8 +66,6 @@ public class HeaderDecoration extends RecyclerView.ItemDecoration {
             }
         }
     }
-
-
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, State state) {

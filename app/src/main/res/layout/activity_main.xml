@@ -7,50 +7,15 @@
     android:orientation="vertical"
     tools:context="com.example.administrator.itemdecoration.MainActivity">
 
-    <Button
-        android:id="@+id/group_btn"
-        android:text="@string/group"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:elevation="@dimen/_4dp"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_height="?attr/actionBarSize"/>
 
-    <Button
-        android:id="@+id/sticky_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <RadioGroup
-        android:id="@+id/rb_control"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintVertical_weight="1"
-        app:layout_constraintBottom_toTopOf="@+id/recycler"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/rb_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="@string/vertical" />
-
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/rb_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/horizontal" />
-
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/rb_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/time_line" />
-
-    </RadioGroup>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"

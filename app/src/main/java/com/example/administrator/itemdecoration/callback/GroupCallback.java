@@ -1,4 +1,4 @@
-package com.example.administrator.itemdecoration.itemdecoration;
+package com.example.administrator.itemdecoration.callback;
 
 import com.example.administrator.itemdecoration.bean.GroupInfo;
 

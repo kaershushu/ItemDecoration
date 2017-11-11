@@ -20,8 +20,8 @@ import android.widget.TextView;
  */
 public class TimeLineAdapter extends RecyclerView.Adapter<VH> {
 
-    private List<Map<String, Object>> mMapList = new ArrayList<>();
-    public TimeLineAdapter(List<Map<String, Object>> mapList) {
+    private List<Map<String, String>> mMapList = new ArrayList<>();
+    public TimeLineAdapter(List<Map<String, String>> mapList) {
         this.mMapList = mapList;
     }
 
@@ -33,9 +33,9 @@ public class TimeLineAdapter extends RecyclerView.Adapter<VH> {
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        Map<String, Object> map = mMapList.get(position);
-        holder.tvLocation.setText(map.get("ItemTitle").toString());
-        holder.tvNext.setText(map.get("ItemText").toString());
+        Map<String, String> map = mMapList.get(position);
+        holder.tvLocation.setText(map.get("ItemTitle"));
+        holder.tvNext.setText(map.get("ItemText"));
     }
 
     @Override
