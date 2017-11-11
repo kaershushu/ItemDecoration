@@ -5,15 +5,16 @@ import java.util.List;
 
 import com.example.administrator.itemdecoration.adapter.GroupAdapter;
 import com.example.administrator.itemdecoration.bean.GroupInfo;
-import com.example.administrator.itemdecoration.itemdecoration.GroupDecoration;
-import com.example.administrator.itemdecoration.itemdecoration.GroupDecoration.GroupCallback;
+import com.example.administrator.itemdecoration.itemdecoration.GroupCallback;
+import com.example.administrator.itemdecoration.itemdecoration.StickyHeaderDecoration;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-public class GroupListActivity extends AppCompatActivity {
+public class HeaderListActivity extends AppCompatActivity {
+
     RecyclerView mRecyclerView;
     GroupAdapter mGroupAdapter;
     List<String> mGroups = new ArrayList<>();
@@ -27,7 +28,7 @@ public class GroupListActivity extends AppCompatActivity {
         initData();
     }
 
-    private void initData(){
+    private void initData() {
         for (int i = 0; i < 50; i++) {
             mGroups.add(i + "");
         }
@@ -43,9 +44,10 @@ public class GroupListActivity extends AppCompatActivity {
                 info.setPosition(index);
                 info.setTitle(groupId + "");
                 info.setGroupId(groupId + "");
+                info.setGroupSize(5);
                 return info;
             }
         };
-        mRecyclerView.addItemDecoration(new GroupDecoration(this, callback));
+        mRecyclerView.addItemDecoration(new StickyHeaderDecoration(HeaderListActivity.this, callback));
     }
 }

@@ -9,7 +9,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 
@@ -18,7 +17,7 @@ import android.view.View;
  *
  * @Description 分组ItemDecoration
  */
-public class GroupDecoration extends RecyclerView.ItemDecoration {
+public class HeaderDecoration extends RecyclerView.ItemDecoration {
 
     private GroupCallback mGroupCallback;
     private Drawable mHeaderDrawable;
@@ -27,7 +26,7 @@ public class GroupDecoration extends RecyclerView.ItemDecoration {
     private final int MHEADERHEIGHT = 120;
     private final int MDIVIDERHEIGHT = 10;
 
-    public GroupDecoration(Context context, GroupCallback callback) {
+    public HeaderDecoration(Context context, GroupCallback callback) {
         this.mGroupCallback = callback;
         mHeaderDrawable = ContextCompat.getDrawable(context, android.R.color.holo_red_dark);
         mDividerDrawable = ContextCompat.getDrawable(context, android.R.color.darker_gray);
@@ -36,17 +35,19 @@ public class GroupDecoration extends RecyclerView.ItemDecoration {
         mTextPaint.setTextSize(35);
     }
 
+    /**
+     * onDraw画普通的大标题
+     */
     @Override
     public void onDraw(Canvas c, RecyclerView parent, State state) {
         super.onDraw(c, parent, state);
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             View child = parent.getChildAt(i);
-            RecyclerView.LayoutParams lp = (LayoutParams) child.getLayoutParams();
             int index = parent.getChildAdapterPosition(child);
             GroupInfo info = mGroupCallback.group(index);
             int left, top, right, bottom = 0;
-            if (info.isFirstPosition()) {
+            if (info.isGroupFirstPosition()) {
                 left = child.getLeft();
                 top = child.getTop() - MHEADERHEIGHT;
                 right = child.getRight();
@@ -65,13 +66,15 @@ public class GroupDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
+
+
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, State state) {
         super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildAdapterPosition(view);
         if (mGroupCallback != null) {
             GroupInfo groupInfo = mGroupCallback.group(position);
-            if (groupInfo.isFirstPosition()) {
+            if (groupInfo.isGroupFirstPosition()) {
                 outRect.set(0, MHEADERHEIGHT, 0, 0);
             } else {
                 outRect.set(0, MDIVIDERHEIGHT, 0, 0);
@@ -79,13 +82,4 @@ public class GroupDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    public interface GroupCallback {
-
-        /**
-         * 此处处理分组逻辑，和ItemDecoration解耦
-         * @param postion
-         * @return
-         */
-        public GroupInfo group(int postion);
-    }
 }

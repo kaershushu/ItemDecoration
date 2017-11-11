@@ -10,6 +10,15 @@ public class GroupInfo {
     private String mGroupId;
     private String mTitle;
     private int mPosition;
+    private int groupSize;
+
+    public int getGroupSize() {
+        return groupSize;
+    }
+
+    public void setGroupSize(int groupSize) {
+        this.groupSize = groupSize;
+    }
 
     public String getGroupId() {
         return mGroupId;
@@ -35,7 +44,11 @@ public class GroupInfo {
         mPosition = position;
     }
 
-    public boolean isFirstPosition(){
+    public boolean isGroupFirstPosition(){
         return mPosition == 0;
+    }
+
+    public boolean isGroupLastPosition(){
+        return mPosition == (groupSize -1) && mPosition >= 0;
     }
 }
