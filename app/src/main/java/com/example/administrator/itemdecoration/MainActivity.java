@@ -81,20 +81,24 @@ public class MainActivity extends AppCompatActivity {
                                 mAdapter = new Tadapter(MainActivity.this);
                                 break;
                             case 2:
+                                mLayoutManager = new LinearLayoutManager(MainActivity.this);
                                 mDecoration = new TimeLineDecoration(MainActivity.this);
                                 mAdapter = new TimeLineAdapter(ListUtils.getMapList());
                                 break;
                             case 3:
+                                mLayoutManager = new LinearLayoutManager(MainActivity.this);
                                 mCallback = new GroupImpl();
                                 mAdapter = new GroupAdapter(ListUtils.getNumList(50));
                                 mDecoration = new HeaderDecoration(MainActivity.this, mCallback);
                                 break;
                             case 4:
+                                mLayoutManager = new LinearLayoutManager(MainActivity.this);
                                 mAdapter = new GroupAdapter(ListUtils.getNumList(50));
                                 mCallback = new GroupImpl();
                                 mDecoration = new StickyHeaderDecoration(MainActivity.this, mCallback);
                                 break;
                         }
+                        mRecyclerView.setLayoutManager(mLayoutManager);
                         mRecyclerView.addItemDecoration(mDecoration);
                         mRecyclerView.setAdapter(mAdapter);
                     }
