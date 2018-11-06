@@ -23,6 +23,7 @@
   - `internal`和`inner`等关键字作用范围
   - `let`和`Elvis运算符`使用
   - `Map`的`put`和`get`方法
-  
+    
+ * __演示效果如下__
 
-![image](https://github.com/kaershushu/ItemDecoration/blob/9adeb16d92e3965464266dc4bc1fa7fb63a383d8/desktop.gif)
+![image](https://github.com/kaershushu/ItemDecoration/blob/9adeb16d92e3965464266dc4bc1fa7fb63a383d8/desktop.gif){:height="50%" width="50%"}
