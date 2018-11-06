@@ -26,4 +26,4 @@
     
  * __演示效果如下__
 
-![image](https://github.com/kaershushu/ItemDecoration/blob/9adeb16d92e3965464266dc4bc1fa7fb63a383d8/desktop.gif =250x250)
+![image](https://github.com/kaershushu/ItemDecoration/blob/9adeb16d92e3965464266dc4bc1fa7fb63a383d8/desktop.gif =24x48)
