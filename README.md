@@ -13,3 +13,7 @@ __有以下几种分割线形式__
 > 5.粘性头部分割线
 
 ![image](https://github.com/kaershushu/ItemDecoration/blob/9adeb16d92e3965464266dc4bc1fa7fb63a383d8/desktop.gif)
+
+`2019.11.6`
+
+__新增kotlin版本__
