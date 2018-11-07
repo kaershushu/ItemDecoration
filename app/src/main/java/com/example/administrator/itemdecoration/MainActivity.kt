@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         mToolbar = findViewById(R.id.toolbar)
         setSupportActionBar(mToolbar)
+        mToolbar?.title = items[0]
         mRecyclerView = findViewById(R.id.recycler)
         mLayoutManager = LinearLayoutManager(this)
         mRecyclerView!!.layoutManager = mLayoutManager
@@ -90,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                     else -> {
                     }
                 }
+                mToolbar?.title = items[which]
                 mRecyclerView!!.layoutManager = mLayoutManager
                 mRecyclerView!!.addItemDecoration(mDecoration ?: return@setItems)
                 mRecyclerView!!.adapter = mAdapter
